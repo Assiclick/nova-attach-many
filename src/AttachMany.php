@@ -58,6 +58,11 @@ class AttachMany extends Field
                     // fetch the submitted values
                     $values = json_decode(request()->input($attribute), true);
 
+                    // if $values is null make it an empty array instead
+                    if (is_null($values)) {
+                        $values = [];
+                    }
+
                     // remove `null` values that may be submitted
                     $filtered_values = array_filter($values);
 
